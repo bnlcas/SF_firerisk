@@ -1,4 +1,7 @@
-## Assemble Data from Census, City Land Use and other sources into a master Fire csv
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""Assemble Data from Census, City Land Use and other sources into a master Fire csv
+"""
 from ast import literal_eval
 import csv
 csv.field_size_limit(320000)
@@ -7,11 +10,11 @@ csv.field_size_limit(320000)
 def get_element_ind(labels, tag):
     # Find the index where a given label occurs
     return [i for i in range(len(labels)) if labels[i] == tag][0]
-    
+
 def get_select_inds(list_data, inds):
     # down select data on the basis of a list of indecis
     return [item for i, item in enumerate(list_data) if i in inds]
-    
+
 #
 def string2float(*args):
     element = args[0]
@@ -23,7 +26,7 @@ def string2float(*args):
         return float(element)
     except ValueError:
         return float(default)
-        
+
 # load a csv file:
 def loadcsv2list(file_name):
     out = []
@@ -54,9 +57,9 @@ def header_data_combine(headers, data):
     tmp = data
     tmp.insert(0,headers)
     return tmp
-    
-        
-    
+
+
+
 
 root_dir = '/Users/changlab/Documents/changrepo/matlab/analysis/Ishihara/Fire/Data/'
 fire_data_csv = 'Fire_Incidents.csv'
@@ -88,7 +91,7 @@ property_tax_tract_data = property_tax_tract[1:]
 
 
 
-## load census_data and add 
+## load census_data and add
 
 census_data = loadcsv2list(root_dir + census_tract_data_csv)
 census_data_header = census_data[0]
@@ -154,8 +157,8 @@ for i in range(len(fire_data)):
     elif len(possible_inds) == 1:
         master_data[possible_inds[0]] = master_data[possible_inds[0]] + fire_data[i]
 
-        
-        
+
+
 
 
 master_header = master_header + fire_headers
@@ -182,5 +185,3 @@ for ind in fire_inds:
     for j in range(fire_pad):
         master_data.append(fire_row)
 '''
-
-
