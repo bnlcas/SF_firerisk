@@ -61,7 +61,8 @@ def header_data_combine(headers, data):
 
 
 
-root_dir = '/Users/changlab/Documents/changrepo/matlab/analysis/Ishihara/Fire/Data/'
+# root_dir = '/Users/changlab/Documents/changrepo/matlab/analysis/Ishihara/Fire/Data/'
+root_dir = '../input/'
 fire_data_csv = 'Fire_Incidents.csv'
 census_coords_data_csv = 'building_coords_copy.csv'
 property_tax_csv = 'Historic_Secured_Property_Tax_Rolls.csv'
